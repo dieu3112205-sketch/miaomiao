@@ -3,235 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>潘皇妙 - 專業個人履歷</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>專業履歷 | 映玲 (Anh Linh)</title>
     <style>
-        /
+        /* CSS 風格參考 LinkedIn */
+        :root {
+            --linkedin-blue: #0073b1;
+            --bg-gray: #f3f2ef;
+            --text-main: rgba(0,0,0,0.9);
+            --text-sub: rgba(0,0,0,0.6);
+            --white: #ffffff;
+            --border: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: 
+            font-family: "PingFang TC", "Microsoft JhengHei", "Segoe UI", sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--text-main);
             line-height: 1.6;
         }
 
-        /* 網頁容器 */
         .container {
-            max-width: 1128px; /*
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 10px;
         }
 
-        /* 區塊樣式 */
-        section {
-            background-color: #fff;
+        /* Profile Header Card */
+        .profile-card {
+            background: var(--white);
             border-radius: 8px;
-            box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.12);
-            margin-bottom: 24px;
-            padding: 24px;
-        }
-
-        h2 {
-            font-size: 20px;
-            color: #191919;
-            margin-top: 0;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 12px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
             margin-bottom: 20px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.05);
         }
 
-        h3 {
-            font-size: 18px;
-            margin: 0 0 8px 0;
-            color: #191919;
+        .banner {
+            height: 160px;
+            background: linear-gradient(135deg, #0073b1 0%, #00a0dc 100%);
         }
 
-        p {
-            margin: 0 0 16px 0;
-            font-size: 16px;
-            color: #666666;
+        .profile-info {
+            padding: 65px 24px 24px 24px;
+            position: relative;
         }
 
-        ul {
-            margin: 0;
-            padding-left: 20px;
-            color: #666666;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        a {
-            color: #0073b1; /* LinkedIn 連結顏色 */
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* 個人資料區塊 - 最頂部 */
-        .profile-header {
-            display: flex;
-            align-items: center;
-            padding: 40px 24px;
-        }
-
-        .profile-photo {
+        .avatar {
             width: 152px;
             height: 152px;
             border-radius: 50%;
-            object-fit: cover; /*/
-            
+            border: 4px solid var(--white);
+            position: absolute;
+            top: -76px;
+            left: 24px;
+            background-color: #eee;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .name { font-size: 28px; font-weight: 700; color: #000; margin-bottom: 4px; }
+        .headline { font-size: 18px; color: var(--text-main); margin-bottom: 8px; }
+        .location { font-size: 14px; color: var(--text-sub); }
+
+        /* Section Styling */
+        .section {
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.05);
+        }
+
+        h2 { font-size: 20px; margin-bottom: 18px; color: var(--text-main); border-bottom: 2px solid var(--bg-gray); padding-bottom: 8px; }
+
+        .experience-item { margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; }
+        .experience-item:last-child { border-bottom: none; margin-bottom: 0; }
         
+        .job-title { font-weight: 600; font-size: 17px; color: var(--linkedin-blue); }
+        .company { font-size: 15px; font-weight: 500; margin: 3px 0; }
+        .date { font-size: 14px; color: var(--text-sub); }
+
+        /* Skills Layout */
+        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; }
         
-        }
-
-       
-
-       
-        .entry {
-            margin-bottom: 24px;
-            border-bottom: 1px solid #f3f2ef;
-            padding-bottom: 16px;
-        }
-
-        .entry:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .entry-title {
+        .skill-tag {
+            background: #fff;
+            border: 1px solid var(--linkedin-blue);
+            color: var(--linkedin-blue);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
             font-weight: 600;
-            color: #191919;
+            transition: all 0.25s ease;
         }
 
-        .entry-subtitle {
-            font-size: 14px;
-            color: #191919;
-            margin-bottom: 4px;
+        .skill-tag:hover {
+            background-color: var(--linkedin-blue);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 115, 177, 0.2);
         }
 
-        .entry-duration {
-            font-size: 14px;
-            color: #666666;
-            margin-bottom: 12px;
+        /* Action Button */
+        .contact-btn {
+            display: inline-block;
+            background-color: var(--linkedin-blue);
+            color: white;
+            padding: 10px 28px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s, transform 0.2s;
         }
 
-        /* 技能區塊 */
-        .skills-list {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-item {
-            background-color: #f3f2ef;
-            color: #666666;
-            padding: 8px 16px;
-            border-radius: 16px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        /* RWD 響應式設計 (手機端優化) */
-        @media (max-width: 768px) {
-            .profile-header {
-                flex-direction: column;
-                text-align: center;
-                padding: 24px;
-            }
-
-            .profile-photo {
-                margin-right: 0;
-                margin-bottom: 20px;
-                width: 120px;
-                height: 120px;
-            }
-
-            .container {
-                margin: 20px auto;
-            }
-
-            section {
-                padding: 16px;
-            }
+        .contact-btn:hover {
+            background-color: #005582;
+            transform: scale(1.03);
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-
-        <section class="profile-header">
-        
-            <img src="my-photo.jpg" alt="" class=">
+<div class="container">
+    <div class="profile-card">
+        <div class="banner"></div>
+        <div class="profile-info">
+            <img src="https://github.com/phuonghoang0615-create/l/blob/main/images.jpg?raw=true" alt="映玲" class="avatar">
             
-            <div class="https://">
-                 -->
-                <h1>潘皇妙</h1>
-                您的專業職稱 -->
-                <p class="headline">資深軟體工程師 | 專注於後端開發與雲端架構</p>
-                <p class="location-contact">
-                    您的居住城市/地區 -->
-                    <i class="fas fa-map-marker-alt"></i> 
-                </p>
-                <div class="contact-links">
-                    您的聯絡資訊與連結 -->
-                    <a href="mailto:your.email@email.com"><i class="fas fa-envelope"></i> dieu3112205@gmail.comcom</a>
-                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
-                    </div>
-            </div>
-        </section>
+            <h1 class="name">映玲 (Anh Linh)</h1>
+            <p class="headline">數位內容創作 | 網頁開發愛好者
+</p>
+            <p class="location">越南 高平 • <a href="#" style="color:var(--linkedin-blue); text-decoration:none;">聯絡資訊</a></p>
+            
+            <a href="mailto:your-email@example.com" class="contact-btn">phuonghoang0615@gmail.com</a>
+        </div>
+    </div>
 
-        <section id="about">
-            <h2>關於我</h2>
-            撰寫一段簡短的個人簡介 -->
-            <p>
-               你好！我叫潘皇妙，今年 20 歲。
+    <div class="section">
+        <h2>關於我</h2>
+        <p>
+            你好，我是<b>映玲</b>。我喜歡寫程式，也喜歡用 AI 創造美感。
+        </p>
+    </div>
 
-我是一個開朗、愛笑的人。平常我有很多愛好，像是買東西、看電影和出去玩。除此之外, 我也很喜歡喝奶茶、拍照和去旅行
-            </p>
-        </section>
+    <div class="section">
+        <h2>工作經歷</h2>
+        <div class="experience-item">
+            <p class="job-title">生產部</p>
+            <p class="company">Garmin台灣國際航電股份有限公司</p>
+            <p class="date">2024年12月 - 至今</p>
+        </div>
+        <div class="experience-item">
+            <p class="job-title">教育背景</p>
+            <p class="company">黎明技術學院-數位多媒體系</p>
+            <p class="date">2024年10月 - 2027年06月</p>
+        </div>
+    </div>
 
-        <section id="experience">
-            <h2>工作經歷</h2>
+    <div class="section">
+        <h2>專業技能</h2>
+        <div class="skills-container">
+            <span class="skill-tag">影片</span>
+            <span class="skill-tag"> AI 視覺設計</span>
+            <span class="skill-tag">社群經營 (Data Analysis)</span>
+            <span class="skill-tag">品牌行銷 (Project Management)</span>
+            <span class="skill-tag">軟體 (Social Media)</span>
+            <span class="skill-tag">中文/越南文 </span>
+        </div>
+    </div>
+</div>
 
-            重複此 .entry 區塊以增加更多經歷 -->
-            <div class="entry">
-                <div class="entry-title">garmin</div>
-                <div class="entry-subtitle">[IT] | [IT]</div>
-                <div class="entry-duration">[開始年份]年 [月]月 – [結束年份]年 [月]月 (或 "迄今")</div>
-                <ul>
-                    <li>負責 [主要職責 1]，提升了 [具體成效]。</li>
-                    <li>帶領 [團隊人數] 人團隊完成 [專案名稱]，成功準時上線。</li>
-                    <li>優化 [特定流程]，減少了 [百分比]% 的 [成本/時間]。</li>
-                    <li>使用 [技術/工具] 開發 [新功能/系統]，服務了 [用戶數] 用戶。</li>
-                </ul>
-            </div>
-
-            <div class="entry">
-                <div class="entry-title">[GARMIN B]</div>
-                <div class="entry-subtitle">[學生]</div>
-                <div class="entry-duration">[開始年份]年 [月]月 – [結束年份]年 [月]月</div>
-                <ul>
-                    <li>參與 [專案名稱] 的開發，負責 [特定模組]。</li>
-                    <li>協助 [提升/優化] [特定指標]，帶來了 [具體影響]。</li>
-                    <li>與 [其他部門] 緊密合作，確保專案需求準確對接。</li>
-                </ul>
-            </div>
-
-            </section>
-
-        <section id="education">
-            <h2>學歷</h2>
-
-            重複此 .entry 區塊以增加更多學歷 -->
-            <div class="entry">
-                <div class="entry-title">[黎明技術學院
-]</div>
-               
+</body>
+</html>
